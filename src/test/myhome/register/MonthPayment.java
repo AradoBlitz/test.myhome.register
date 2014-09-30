@@ -22,11 +22,8 @@ public class MonthPayment {
 				rent = result.getInt(1);
 			
 			}finally{
-				try{
-					stmt.execute("drop table rent");
-				}finally{
-					stmt.close();
-				}
+				
+				stmt.close();
 			}
 		}finally{
 			conn.close();

@@ -24,8 +24,11 @@ public class RegisterDBIT {
 				stmt.execute("insert into rent (rent) values("  + strRent + ")");
 				monthPayment.readPayment();
 			}finally{
-				
-				stmt.close();
+				try{
+					stmt.execute("drop table rent");
+				}finally{
+					stmt.close();
+				}
 				
 			}
 		}finally{
