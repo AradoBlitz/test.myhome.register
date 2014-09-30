@@ -18,7 +18,11 @@ public class RegisterDBIT {
 		try{
 			Statement stmt = conn.createStatement();
 			try{
-				
+				stmt.execute("create table rent (rent integer)");
+				String strRent = "" + monthPayment.rent;
+		
+				stmt.execute("insert into rent (rent) values("  + strRent + ")");
+				monthPayment.readPayment();
 			}finally{
 				
 				stmt.close();
@@ -27,7 +31,7 @@ public class RegisterDBIT {
 		}finally{
 			conn.close();
 		}
-		monthPayment.readPayment();
+	
 		assertEquals("Rent should be provided.", 3500, monthPayment.rent);
 	}
 }
